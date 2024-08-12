@@ -44,7 +44,7 @@ body {
     object-fit: cover;
     border-radius: 1em;
 }
-/* media *//
+/* media */
 .product-box__image-tablet {
     display: none;
     width: 100%;
@@ -57,7 +57,6 @@ body {
     object-fit: cover;
     border-radius: 1em;
 }
-/* media */
 .product-box__button {
     position: absolute;
     top: 100%;
@@ -133,8 +132,14 @@ body {
     margin-bottom: 2em;
 }
 @media (min-width: 440px) {
+    .context-header {
+        font-size: 3.5rem;
+        margin-left: clamp(0.1em, 2vw, 1em);
+    }
     .grid {
         grid-template-columns: repeat(2, 1fr);
+        row-gap: 1.2em;
+        column-gap: 0;
     }
     .product-box {
         width: 90%;
@@ -145,6 +150,77 @@ body {
     .product-box__image-tablet {
         display: block;
     }
-    
-
+    .product-box__short-name {
+        font-size: 2vw;
+    }
+    .product-box__full-name {
+        font-size: clamp(0.8rem, 3vw, 3rem);
+    }
+    .product-box__price {
+        font-size: clamp(0.5rem, 3.5vw, 3rem);
+    }
+}
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 2em;
+    }
+    .product-box__short-name {
+        font-size: 1.5vw;
+    }
+    .product-box__full-name {
+        font-size: clamp(0.8rem, 2.2vw, 3rem);
+    }
+    .product-box__price {
+        font-size: clamp(0.5rem, 2.7vw, 3rem);
+    }
+}
+@media (min-width: 1024px) {
+    .product-box__image-tablet {
+        display: none;
+    }
+    .product-box__image-desktop {
+        display: block;
+    }
+    main {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1em;
+    }
+    .context-header {
+        font-size: 3rem;
+        margin: 1.75em 0 0.5em 1.85em;
+        margin-left: clamp(1.25em, 5.8vw, 1.9em);
+    }
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        width: auto;
+        margin-left: clamp(2.75em, 5vw, 5em);
+        margin-right: 0;
+    }
+    .product-box__image-desktop {
+        border-radius: 0.5em;
+    }
+    .product-box__short-name {
+        font-size: 0.8rem;
+    }
+    .product-box__full-name {
+        font-size: 1rem;
+    }
+    .product-box__price {
+        font-size: 1.1rem;
+    }
+    .cart {
+        width: 40vw;
+        margin: 5em 5vw 0 1.2em;
+    }
+    .cart img {
+        width: 35%;
+    }
+    .cart h1 {
+        font-size: max(1.5vw, 1rem);
+    }
+    .cart p {
+        font-size: min(90%, 0.9vw);
+    }
 }
