@@ -8,7 +8,8 @@ export const products = [
        },
        "name": "Waffle with Berries",
        "category": "Waffle",
-       "price": 6.50
+       "price": 6.50,
+       id: "10000"
     },
     {
         "image": {
@@ -19,7 +20,8 @@ export const products = [
         },
         "name": "Vanilla Bean Crème Brûlée",
         "category": "Crème Brûlée",
-        "price": 7.00
+        "price": 7.00,
+        id: "10001"
      },
      {
         "image": {
@@ -30,7 +32,8 @@ export const products = [
         },
         "name": "Macaron Mix of Five",
         "category": "Macaron",
-        "price": 8.00
+        "price": 8.00,
+        id: "10002"
      },
      {
         "image": {
@@ -41,7 +44,8 @@ export const products = [
         },
         "name": "Classic Tiramisu",
         "category": "Tiramisu",
-        "price": 5.50
+        "price": 5.50,
+        id: "10003"
      },
      {
         "image": {
@@ -52,7 +56,8 @@ export const products = [
         },
         "name": "Pistachio Baklava",
         "category": "Baklava",
-        "price": 4.00
+        "price": 4.00,
+        id: "10004"
      },
      {
         "image": {
@@ -63,7 +68,8 @@ export const products = [
         },
         "name": "Lemon Meringue Pie",
         "category": "Pie",
-        "price": 5.00
+        "price": 5.00,
+        id: "10005"
      },
      {
         "image": {
@@ -74,7 +80,8 @@ export const products = [
         },
         "name": "Red Velvet Cake",
         "category": "Cake",
-        "price": 4.50
+        "price": 4.50,
+        id: "10006"
      },
      {
         "image": {
@@ -85,7 +92,8 @@ export const products = [
         },
         "name": "Salted Caramel Brownie",
         "category": "Brownie",
-        "price": 4.50
+        "price": 4.50,
+        id: "10007"
      },
      {
         "image": {
@@ -96,6 +104,7 @@ export const products = [
         },
         "name": "Vanilla Panna Cotta",
         "category": "Panna Cotta",
-        "price": 6.50
+        "price": 6.50,
+        id: "10008"
      }
 ];
