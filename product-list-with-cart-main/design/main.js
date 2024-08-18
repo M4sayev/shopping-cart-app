@@ -1,16 +1,16 @@
 import {products, renderPrice} from './products.js';
-import {cart} from './cart.js';
+import {cart, refreshCart} from './cart.js';
 
 let gridHTML = '';
 products.forEach((product) => {
     gridHTML +=
     `
-    <div class="product-box" data-product-id='${product.id}'>
+    <div class="product-box">
         <div class="product-box__image-n-button">
             <img src=".${product.image.mobile}" alt="${product.category}" class="product-box__image-mobile">
             <img src=".${product.image.tablet}" alt="${product.category}" class="product-box__image-tablet">
             <img src=".${product.image.desktop}" alt="${product.category}" class="product-box__image-desktop">
-            <button class="product-box__button js-product-box-button hoverOn">
+            <button class="product-box__button js-product-box-button hoverOn" data-product-id='${product.id}'>
                 <img src="../assets/images/icon-decrement-quantity.svg" class="decrement-quantity" data-quantity>
                 <img src="../assets/images/icon-add-to-cart.svg" class="cart-image">
                 <span class="button-text">Add to Cart</span>
@@ -68,7 +68,7 @@ AddtoCartButtons.forEach((button) => {
         plusButton.style.display = 'block';
     } 
 
-    function toggleOffSelectQuality() {
+    function toggleOffSelectQuality(productId) {
         toggleHover();
         addBorderImg();
         cartImage.style.display = 'block';
@@ -77,6 +77,12 @@ AddtoCartButtons.forEach((button) => {
         buttonText.innerHTML = 'Add to Cart';
         minusButton.style.display = 'none';
         plusButton.style.display = 'none';  
+        const item = {
+            quantity: itemQuantity,
+            productId
+        };
+        cart.push(item);
+        refreshCart();
     }
 
     let isButtonToggled = false;
@@ -87,7 +93,7 @@ AddtoCartButtons.forEach((button) => {
             isButtonToggled = true;
         } else {
             if (event.target.closest('[data-quantity]') != null) return;
-            toggleOffSelectQuality();
+            toggleOffSelectQuality(event.target.closest('button').dataset.productId);
             isButtonToggled = false;
         }
     });

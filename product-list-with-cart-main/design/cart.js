@@ -4,7 +4,7 @@ import {AddtoCartButtons} from './main.js';
 export const cart = [
 ];
 
-function refreshCart() {
+export function refreshCart() {
     
     let cartHTML = '';     
     let cartTotalQuantity = 0;
@@ -52,7 +52,7 @@ function refreshCart() {
     ;
 }
 
-function refreshFullCart() {
+export function refreshFullCart() {
     
     if (cart.length > 0) {
         
@@ -66,7 +66,6 @@ function refreshFullCart() {
             });
         });
     } else {
-        console.log('in block');
         document.querySelector('.js-cart').innerHTML = 
         `
         <h1 class="cart-quantity">Your Cart (0)</h1>
@@ -83,9 +82,3 @@ function removeCartItem(productId) {
     });
     refreshFullCart();
 }
-
-AddtoCartButtons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        console.log(event.target.closest('button'));
-    });
-});
