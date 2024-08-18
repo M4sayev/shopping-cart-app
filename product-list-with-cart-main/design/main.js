@@ -1,4 +1,5 @@
-import {products} from './products.js';
+import {products, renderPrice} from './products.js';
+import {cart} from './cart.js';
 
 let gridHTML = '';
 products.forEach((product) => {
@@ -18,13 +19,13 @@ products.forEach((product) => {
         </div>
         <p class="product-box__short-name">${product.category}</p>
         <p class="product-box__full-name">${product.name}</p>
-        <p class="product-box__price">$${product.price.toFixed(2)}</p> 
+        <p class="product-box__price">$${renderPrice(product.price)}</p> 
     </div>
     `
 });
 document.querySelector('.grid').innerHTML = gridHTML;
 
-const AddtoCartButtons = document.querySelectorAll('.js-product-box-button');
+export const AddtoCartButtons = document.querySelectorAll('.js-product-box-button');
 AddtoCartButtons.forEach((button) => {
     const minusButton = button.children[0];
     const cartImage = button.children[1];
@@ -103,6 +104,7 @@ AddtoCartButtons.forEach((button) => {
         itemQuantity++;
         buttonText.innerHTML = `${itemQuantity}`;
     });
+
 });
 
 

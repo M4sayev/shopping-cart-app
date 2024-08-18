@@ -108,3 +108,7 @@ export const products = [
         id: "10008"
      }
 ];
+
+export function renderPrice(price) {
+    return price.toFixed(2);
+}
