@@ -62,6 +62,9 @@ function refreshCart() {
 
 }
 
+let modalIsOn = false;
+const modal = document.querySelector('.confirmation-modal');
+
 export function refreshFullCart() {
     
     if (cart.length > 0) {
@@ -69,7 +72,6 @@ export function refreshFullCart() {
         refreshCart();
 
         const removeItemButtons = document.querySelectorAll('.remove-from-cart');
-        const modal = document.querySelector('.confirmation-modal');
 
         removeItemButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
@@ -79,6 +81,7 @@ export function refreshFullCart() {
         // confirm
         document.querySelector('.cart-confirm-order').addEventListener('click', () => {
             addToModal();
+            modalIsOn = true;
             if (window.innerWidth <= 768) {
                 modal.showModal();
                 modal.style.display = 'flex';
@@ -93,6 +96,7 @@ export function refreshFullCart() {
         });
         document.querySelector('.start-new-order').addEventListener('click', () => {
             cart = [];
+            modalIsOn = false;
             if (window.innerWidth <= 768) {
                 modal.style.transform = 'translateY(0)';
                 setTimeout(() => {
@@ -117,6 +121,27 @@ export function refreshFullCart() {
     }
 }
 refreshFullCart();
+
+const prevWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+    const difference = prevWidth - window.innerWidth;
+    console.log(prevWidth);
+    console.log(difference);
+    if (modalIsOn && (difference > 0)) {
+        if (window.innerWidth <= 768) {
+            modal.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.close();
+            }, 300); 
+        } else {
+            modal.style.display = 'none';
+            modal.classList.remove('confirmation-modal-desktop');
+            modal.close();
+        }
+        modalIsOn = false;
+    }
+});
 
 function removeCartItem(productId) {
     cart.forEach((item, index) => {
