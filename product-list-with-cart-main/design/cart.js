@@ -1,15 +1,15 @@
 import {products, renderPrice} from './products.js';
 import {AddtoCartButtons} from './main.js';
 
-export const cart = [
-    {
-        quantity: 1,
-        productId: '10001'
-    },
-    {
-        quantity: 2,
-        productId: '10000'
-    }
+export let cart = [
+    // {
+    //     quantity: 1,
+    //     productId: '10001'
+    // },
+    // {
+    //     quantity: 2,
+    //     productId: '10000'
+    // }
 ];
 
 
@@ -59,6 +59,7 @@ function refreshCart() {
     </div>
     `
     ;
+
 }
 
 export function refreshFullCart() {
@@ -77,6 +78,7 @@ export function refreshFullCart() {
         });
         // confirm
         document.querySelector('.cart-confirm-order').addEventListener('click', () => {
+            addToModal();
             if (window.innerWidth <= 768) {
                 modal.showModal();
                 modal.style.display = 'flex';
@@ -86,10 +88,11 @@ export function refreshFullCart() {
             } else {
                 modal.showModal();
                 modal.style.display = 'flex';
-                // modal.classList.add('confirmation-modal-desktop');
+                modal.classList.add('confirmation-modal-desktop');
             }
         });
         document.querySelector('.start-new-order').addEventListener('click', () => {
+            cart = [];
             if (window.innerWidth <= 768) {
                 modal.style.transform = 'translateY(0)';
                 setTimeout(() => {
@@ -98,9 +101,10 @@ export function refreshFullCart() {
                 }, 300); 
             } else {
                 modal.style.display = 'none';
-                // modal.classList.remove('confirmation-modal-desktop');
+                modal.classList.remove('confirmation-modal-desktop');
                 modal.close();
             }
+            refreshFullCart()
         });
 
     } else {
@@ -120,6 +124,48 @@ function removeCartItem(productId) {
     });
     refreshFullCart();
 }
+
+
+
+function addToModal() {
+    let itemsPreviewHTML = '';
+    let orderPrice = 0;
+
+    cart.forEach((item) => {
+
+        let matchingItem;
+        products.forEach((product) => {
+            if (item.productId === product.id) {
+                matchingItem = product;
+            }
+        });
+
+        itemsPreviewHTML += 
+        `
+        <div class="modal__cart-item">
+            <div class="modal__img-n-text">
+                <img src=".${matchingItem.image.thumbnail}" alt="${matchingItem.category}">
+                <div class="modal__item-text"> 
+                    <p class="modal__item-name">${matchingItem.name}</p>
+                    <span class="modal__quantity">${item.quantity}x</span>
+                    <span class="modal__price-per-unit">@ $${renderPrice(matchingItem.price)}</span>
+                </div>
+            </div> 
+            <span class="modal__total-price">$${renderPrice(matchingItem.price * item.quantity)}</span>
+        </div>
+        `
+        orderPrice += matchingItem.price * item.quantity;
+    });
+
+    document.querySelector('.items-preview').innerHTML = itemsPreviewHTML + 
+    `
+        <div class="modal__total-order">
+            <span>Order Total</span>
+            <span>$${renderPrice(orderPrice)}</span>
+        </div>
+    `
+}
+
 
 
 
