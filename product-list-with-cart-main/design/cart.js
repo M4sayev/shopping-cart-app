@@ -2,10 +2,19 @@ import {products, renderPrice} from './products.js';
 import {AddtoCartButtons} from './main.js';
 
 export const cart = [
+    {
+        quantity: 1,
+        productId: '10001'
+    },
+    {
+        quantity: 2,
+        productId: '10000'
+    }
 ];
 
-export function refreshCart() {
-    
+
+function refreshCart() {
+
     let cartHTML = '';     
     let cartTotalQuantity = 0;
     let orderPrice = 0;
@@ -59,12 +68,41 @@ export function refreshFullCart() {
         refreshCart();
 
         const removeItemButtons = document.querySelectorAll('.remove-from-cart');
+        const modal = document.querySelector('.confirmation-modal');
 
         removeItemButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
                 removeCartItem(event.target.parentElement.dataset.productId);
             });
         });
+        // confirm
+        document.querySelector('.cart-confirm-order').addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                modal.showModal();
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.style.transform = 'translateY(-100%)';
+                }, 300);
+            } else {
+                modal.showModal();
+                modal.style.display = 'flex';
+                // modal.classList.add('confirmation-modal-desktop');
+            }
+        });
+        document.querySelector('.start-new-order').addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                modal.style.transform = 'translateY(0)';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.close();
+                }, 300); 
+            } else {
+                modal.style.display = 'none';
+                // modal.classList.remove('confirmation-modal-desktop');
+                modal.close();
+            }
+        });
+
     } else {
         document.querySelector('.js-cart').innerHTML = 
         `
@@ -82,3 +120,6 @@ function removeCartItem(productId) {
     });
     refreshFullCart();
 }
+
+
+

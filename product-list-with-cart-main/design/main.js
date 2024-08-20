@@ -1,5 +1,5 @@
 import {products, renderPrice} from './products.js';
-import {cart, refreshCart} from './cart.js';
+import {cart, refreshFullCart} from './cart.js';
 
 let gridHTML = '';
 products.forEach((product) => {
@@ -81,8 +81,14 @@ AddtoCartButtons.forEach((button) => {
             quantity: itemQuantity,
             productId
         };
-        cart.push(item);
-        refreshCart();
+
+        let index = cart.findIndex(cartItem => cartItem.productId === item.productId);
+        if (index === -1) {
+            cart.push(item);
+        } else {
+            cart[index].quantity += itemQuantity;
+        }
+        refreshFullCart();
     }
 
     let isButtonToggled = false;
@@ -102,7 +108,6 @@ AddtoCartButtons.forEach((button) => {
         if (itemQuantity > 1) {
             itemQuantity--;
             buttonText.innerHTML = `${itemQuantity}`;
-            console.log('minus clicked');
         }
     });
 

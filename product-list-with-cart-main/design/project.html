@@ -18,9 +18,54 @@
             <div class="grid"></div>
         </section>
         <div class="cart js-cart"></div>
-        <script type="module" src="products.js"></script>
-        <script type="module" src="cart.js"></script>
-        <script type="module" src="main.js"></script>
+        <dialog class="confirmation-modal">
+            <img src="../assets/images/icon-order-confirmed.svg" class="check-img">
+            <h1 class="modal-header">Order Confirmed</h1>
+            <p class="modal-paragraph">We hope you enjoy your food!</p>
+            <div class="items-preview">
+                <div class="modal__cart-item">
+                    <div class="modal__img-n-text">
+                        <img src="../assets/images/image-baklava-thumbnail.jpg" alt="thumbnail">
+                        <div class="modal__item-text"> 
+                            <p class="modal__item-name">Classic Tiramisu</p>
+                            <span class="modal__quantity">1x</span>
+                            <span class="modal__price-per-unit">@ $5.50</span>
+                        </div>
+                    </div> 
+                    <span class="modal__total-price">$30.50</span>
+                </div>
+                <div class="modal__cart-item">
+                    <div class="modal__img-n-text">
+                        <img src="../assets/images/image-baklava-thumbnail.jpg" alt="thumbnail">
+                        <div class="modal__item-text"> 
+                            <p class="modal__item-name">Classic Tiramisu</p>
+                            <span class="modal__quantity">1x</span>
+                            <span class="modal__price-per-unit">@ $5.50</span>
+                        </div>
+                    </div> 
+                    <span class="modal__total-price">$30.50</span>
+                </div>
+                <div class="modal__cart-item">
+                    <div class="modal__img-n-text">
+                        <img src="../assets/images/image-baklava-thumbnail.jpg" alt="thumbnail">
+                        <div class="modal__item-text"> 
+                            <p class="modal__item-name">Classic Tiramisu</p>
+                            <span class="modal__quantity">1x</span>
+                            <span class="modal__price-per-unit">@ $5.50</span>
+                        </div>
+                    </div> 
+                    <span class="modal__total-price">$30.50</span>
+                </div>
+                <div class="modal__total-order">
+                    <span>Order Total</span>
+                    <span>$91.50</span>
+                </div>
+            </div>
+            <button class="start-new-order">Start New Order</button>
+        </dialog>
     </main>
+    <script type="module" src="products.js"></script>
+    <script type="module" src="cart.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
