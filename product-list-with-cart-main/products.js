@@ -17,7 +17,7 @@ export async function fetchProducts() {
 
     console.log(restProducts);
 
-    await delay(Math.random() * 2000 + 1000);
+    await delay(Math.random() * 2000 + 100);
 
     return restProducts;
   } catch (error) {
