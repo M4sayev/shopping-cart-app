@@ -580,6 +580,7 @@ body {
     }
     .product-box__button {
         font-size: min(1.25em, 1vw);
+        padding: 1em;
     }
     .cart-image {
         width: 1.5vw;
@@ -589,11 +590,11 @@ body {
         width: 60vw;
     }
     .cart h1 {
-        font-size: 1.5vw;
+        font-size: calc(0.75vw + 1em);
         margin-inline: 1rem;
     }
     .empty-cart-text {
-        font-size: 1vw;
+        font-size: calc(0.3vw + 0.65em);
     }
     .cart-item__name {
         font-size: min(1.15vw, 1.25rem);
