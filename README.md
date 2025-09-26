@@ -19,3 +19,6 @@ A simple e-commerce product grid with a shopping cart and order modal. Originall
 - Used Maps for faster product lookups
 - Event delegation to prevent duplicate listeners
 - Cleaned up add-to-cart button logic and skeleton loader
+
+## Challenge Info
+This project is a solution to the [Frontend Mentor Challenge](link-to-challenge).  
