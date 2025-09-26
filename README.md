@@ -21,4 +21,4 @@ A simple e-commerce product grid with a shopping cart and order modal. Originall
 - Cleaned up add-to-cart button logic and skeleton loader
 
 ## Challenge Info
-This project is a solution to the [Frontend Mentor Challenge](link-to-challenge).  
+This project is a solution to the [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d).  
